@@ -12,7 +12,7 @@ public class Output
     private byte[] machineCode;
     private List<String> bytes;
     private List<String> binary;
-    private List<String> hex;
+    private StringBuilder hex;
     private List<String> octal;
 
 
@@ -27,7 +27,7 @@ public class Output
     {
         bytes = new ArrayList<>();
         binary = new ArrayList<>();
-        hex = new ArrayList<>();
+        hex = new StringBuilder();
         octal = new ArrayList<>();
     }
 
@@ -53,7 +53,7 @@ public class Output
         {
             System.out.println(b);
             binary.add(convertByteToBinary(b));
-            hex.add(convertByteToHex(b));
+            hex.append(convertByteToHex(b));
             octal.add(convertByteToOctal(b));
         }
     }
@@ -98,12 +98,12 @@ public class Output
         this.binary = binary;
     }
 
-    public List<String> getHex() {
-        return hex;
+    public String getHex() {
+        return hex.toString();
     }
 
-    public void setHex(List<String> hex) {
-        this.hex = hex;
+    public void setHex(String hex) {
+        this.hex = new StringBuilder(hex);
     }
 
     public List<String> getOctal() {
